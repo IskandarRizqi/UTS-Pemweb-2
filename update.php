@@ -25,20 +25,20 @@
     <!-- Navbar -->
     <nav class="navbar navbar-light" style="background-color: #00FFFF; text-uppercase">
         <div class="container">
-            <a class="navbar-brand" href="index.php">SURAT MASUK</a>
+            <a class="navbar-brand" href="indek.php">SURAT MASUK</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="index.php">Home</a>
+                        <a class="nav-link" aria-current="page" href="indek.php">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="logout.php">Logout</a>
+                        <a class="nav-link" href="#">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -50,7 +50,7 @@
     <div class="container">
         <div class="row my-2">
             <div class="col-md">
-                <h3 class="fw-bold text-uppercase"><i class="bi bi-pencil-square"></i>&nbsp;SURAT MASUK</h3>
+                <h3 class="fw-bold text-uppercase"><i class="bi bi-pencil-square"></i>&nbsp;Ubah Data Surat Masuk</h3>
             </div>
             <hr>
         </div>
@@ -75,20 +75,19 @@
         <!-- Inputan tersembunyi untuk menyimpan data id yang digunakan untuk mengupdate data, lebih aman di banding menggunakan id dari params -->
         <input type="hidden" value="<?= $data['id'] ?>" name="id">
         <div class="mb-3">
-          <label for="inputnomor" class="form-label">nomor</label>
-          <input type="text" class="form-control" id="inputnomor" value="<?= $data['nomor'] ?>" name="nomor" placeholder="Masukan nomor
-          ">
+          <label for="inputNomor" class="form-label">Nonor Surat</label>
+          <input type="text" class="form-control" id="inputNomor" value="<?= $data['nomor'] ?>" name="nomor" placeholder="Masukan Nomor Surat">
         </div>
         <div class="mb-3">
-          <label for="inputTanggal" class="form-label">Tanggal</label>
-          <input type="date" class="form-control" id="inputTanggal" value="<?= $data['tanggal'] ?>" name="tanggal" >
+          <label for="inputTanggal" class="form-label">Tanggal Surat</label>
+          <input type="date" class="form-control" id="inputTanggal" value="<?= $data['tanggal'] ?>" name="tanggal">
         </div>
         <div class="mb-3">
-          <label for="inputpengirim" class="form-label">Pengirim</label>
-          <input type="text" class="form-control" id="inputpengirim" value="<?= $data['pengirim'] ?>" name="pengirim" placeholder="Masukan Pengirim">
+          <label for="inputPengirim" class="form-label">Pengirim</label>
+          <input type="text" class="form-control" id="inputPengirim" value="<?= $data['pengirim'] ?>" name="pengirim" placeholder="Masukan Nama Pengirim">
         </div>
         <input name="rekam" type="submit" class="btn btn-primary" value="Ubah">
-        <a href="index.php" type="button" class="btn btn-info text-white">Kembali</a>
+        <a href="indek.php" type="button" class="btn btn-info text-white">Kembali</a>
       </form>
     </div>
   </section>
@@ -106,7 +105,7 @@
       $pengirim = $_POST['pengirim'];
 
       // Membuat Query
-      $query = "UPDATE tbl_suratmasuk SET nomor = '$nomor', tanggal = '$tanggal', pengirim = '$pengirim' ";
+      $query = "UPDATE tbl_suratmasuk SET nomor = '$nomor', tanggal = '$tanggal', pengirim = '$pengirim' WHERE id = '$id'";
 
       $result = mysqli_query($koneksi, $query);
 
@@ -121,6 +120,16 @@
   ?>
   <!-- Footer -->
     <div class="container-fluid" style="margin-top: 30px;">
+        <div class="row bg-light" style="background-color: #008B8B;text-white">
+            <div class="col-md-6 my-2" id="about">
+                <h4 class="fw-bold text-uppercase">The True Vocation</h4>
+                <p>Politeknik Harapan Bersama Tegal, Program Studi Teknik Informatika</p>
+            </div>
+        </div>
+    </div>
+    </footer>
+    <!-- Footer -->
+    <div class="container-fluid">
         <div class="row bg-dark text-white">
             <div class="col-md-6 my-2" id="about">
                 <h4 class="fw-bold text-uppercase">About</h4>
@@ -141,7 +150,6 @@
     <!-- Close Footer -->
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-
 
 </body>
 </html>
